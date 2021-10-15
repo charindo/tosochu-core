@@ -12,7 +12,7 @@ public class PlayerInteract implements Listener {
     public void onTouch(PlayerInteractEvent event){
         Player player = event.getPlayer();
         if(event.getAction().equals(Action.RIGHT_CLICK_AIR)){
-            player.sendMessage("[Debug] 貴方は空気を右クリックしました");
+            //player.sendMessage("[Debug] 貴方は空気を右クリックしました");
         }
     }
 }

@@ -1,6 +1,7 @@
 package net.charinds;
 
 import net.charinds.manager.CommandManager;
+import net.charinds.manager.ConfigManager;
 import net.charinds.manager.EventManager;
 import net.charinds.manager.GameManager;
 import org.bukkit.event.Listener;
@@ -19,6 +20,7 @@ public final class Core extends JavaPlugin implements Listener {
         CommandManager commandManager = new CommandManager();
         commandManager.registerCommands();
         GameManager gameManager = new GameManager();
+        ConfigManager configManager = new ConfigManager();
         //===============================================//
         getLogger().info("プラグインを読み込みました。");
     }
