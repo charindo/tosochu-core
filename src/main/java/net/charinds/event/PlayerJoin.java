@@ -16,14 +16,10 @@ public class PlayerJoin implements Listener {
         List<String> builder_list = new ArrayList<String>();
         Player player = event.getPlayer();
         String name = player.getName();
-        event.setJoinMessage("\u00A7b"+ name + "がログインしました(管理者モード)");
+        event.setJoinMessage("\u00A7a\u00A7l[+]\u00A7r "+ name + "");
         if(player.getName().equals("charindou")){//俺だったら
             player.setDisplayName("\u00A7c\u00A7l[*]\u00A7r" + player.getName());
             player.setPlayerListName("\u00A7c\u00A7l[*]\u00A7r" + player.getName());
         }
-        //----------------------------------------//
-        player.setGameMode(GameMode.CREATIVE);
-        player.setFlying(true);
-        //----------------------------------------//
     }
 }
