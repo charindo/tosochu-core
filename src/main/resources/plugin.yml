@@ -1,0 +1,12 @@
+name: Core
+version: @version@
+main: net.charinds.Core
+authors: [ charindo ]
+description: KAMIPLUGIN
+commands:
+  core:
+    aliases: [ c, tst ]
+    description: Command description
+  hub:
+    aliases: [ home, spawn ]
+    description: Command description
