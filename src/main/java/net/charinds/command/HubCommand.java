@@ -14,11 +14,11 @@ import org.bukkit.entity.Player;
 public class HubCommand implements CommandExecutor{
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
         if (command.getName().equalsIgnoreCase("hub")) { //親コマンドの判定
-            if(sender instanceof Player) {
+            if (sender instanceof Player) {
                 ((Player) sender).teleport(new Location(Bukkit.getWorld("lobby"), -5.5,66,-5.5));
-            }else{
+            } else {
                 sender.sendMessage(ChatColor.RED + "このコマンドはゲーム内で実行してください");
             }
         }

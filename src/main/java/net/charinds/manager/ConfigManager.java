@@ -3,7 +3,7 @@ package net.charinds.manager;
 import net.charinds.Core;
 import net.charinds.store.CustomConfig;
 
-public class ConfigManager {
+public class ConfigManager{
 
     public static CustomConfig config;
     public static CustomConfig admins;

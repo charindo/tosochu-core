@@ -6,7 +6,7 @@ import net.charinds.event.PlayerJoin;
 import net.charinds.event.PlayerQuit;
 import org.bukkit.Bukkit;
 
-public class EventManager {
+public class EventManager{
 
     public static void registerEvents(Core core){
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoin(), core);

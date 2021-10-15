@@ -12,10 +12,10 @@ public class Timer extends BukkitRunnable {
     }
 
     @Override
-    public void run(){
+    public void run() {
         i -= 1;
         Bukkit.getServer().broadcastMessage(i.toString());
-        if(i <= 0){
+        if (i <= 0) {
             cancel();
         }
     }

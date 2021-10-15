@@ -12,19 +12,19 @@ public class GameManager {
         status = StatusStore.STOPPED;
     }
 
-    public void startGame(){
+    public void startGame() {
         //TODO
     }
 
-    public void endGame(){
+    public void endGame() {
         //TODO
     }
 
-    public void resetGame(){
+    public void resetGame() {
         //TODO
     }
 
-    public void resetStatus(){
+    public void resetStatus() {
         //TODO
     }
 }

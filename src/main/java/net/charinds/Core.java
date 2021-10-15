@@ -12,7 +12,7 @@ public final class Core extends JavaPlugin implements Listener {
     public static Core core;
 
     @Override
-    public void onEnable() {
+    public void onEnable(){
         this.core = this;
         //===============================================//
         EventManager eventManager = new EventManager();
@@ -26,7 +26,7 @@ public final class Core extends JavaPlugin implements Listener {
     }
 
     @Override
-    public void onDisable() {
+    public void onDisable(){
         // Plugin shutdown logic
     }
 }
