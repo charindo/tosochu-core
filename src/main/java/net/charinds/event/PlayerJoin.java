@@ -1,6 +1,7 @@
 package net.charinds.event;
 
 import net.charinds.manager.ConfigManager;
+import net.charinds.manager.GameManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,6 +30,7 @@ public class PlayerJoin implements Listener {
         for (PotionEffect effect : player.getActivePotionEffects()) {
             player.removePotionEffect(effect.getType());
         }
-        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 2147483647, 0, false));
+        GameManager.getInstance().updateScoreboard(player);
+        //player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 2147483647, 0, false));
     }
 }

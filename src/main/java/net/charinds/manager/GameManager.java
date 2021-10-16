@@ -5,9 +5,14 @@ import net.charinds.scheduler.Timer;
 import net.charinds.store.CustomConfig;
 import net.charinds.store.StatusStore;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Score;
+import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.TimerTask;
 
@@ -37,6 +42,20 @@ public class GameManager {
 
     public Integer getStatus() {
         return status;
+    }
+
+    public void updateScoreboard(Player player) {
+        Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
+        Objective objective = board.registerNewObjective("Main board", "dummy");
+        objective.setDisplayName("逃走中");
+        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+        Integer i = 0;
+        Score score;
+        score = objective.getScore(ChatColor.YELLOW + "ゲーム開始まで");
+        score.setScore(i--);
+        score = objective.getScore(ChatColor.YELLOW + "しばらくお待ちください...");
+        score.setScore(i--);
+        player.setScoreboard(board);
     }
 
     public void startGame() {
