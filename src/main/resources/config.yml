@@ -2,6 +2,7 @@ lobbyPos:
   x: -5.5
   y: 66
   z: -5.5
+  world: lobby
 mysql:
   db: changeme
   host: localhost
