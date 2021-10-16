@@ -46,6 +46,10 @@ public class CoreCommand implements CommandExecutor {
                                 }
                             }
                         } else if(args[1].equalsIgnoreCase("remove")) {
+                            /*
+                             * 運営削除の課題
+                             * ・オフラインプレイヤーのUUIDの取得方法(未参加も含め)がわからない(追加も同様)
+                             */
                             if(args.length < 3){
                                 sender.sendMessage(ChatColor.YELLOW + "削除するプレイヤー名を指定してください");
                             } else {
