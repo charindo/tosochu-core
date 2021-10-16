@@ -1,0 +1,9 @@
+lobbyPos:
+  x: -5.5
+  y: 66
+  z: -5.5
+mysql:
+  db: changeme
+  host: localhost
+  password: changeme
+  user: charindo
