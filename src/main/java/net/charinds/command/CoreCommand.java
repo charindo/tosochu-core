@@ -21,15 +21,16 @@ public class CoreCommand implements CommandExecutor {
                 if (args.length == 0) {
                     sender.sendMessage(ChatColor.YELLOW + "サブコマンドを入力してください");
                 } else {
-                    if (args[0].equalsIgnoreCase("tt")) {
+                    /*if (args[0].equalsIgnoreCase("tt")) {
                         if (args.length < 2) {
                             sender.sendMessage(ChatColor.YELLOW + "実行する時間を指定してください");
                         } else {
                             Integer i = Integer.parseInt(args[1]);
-                            new Timer(i).runTaskTimer(Core.core, 20L, 20L);
+                            new Timer().runTaskTimer(Core.core, 20L, 20L);
                             sender.sendMessage(ChatColor.GREEN + "スケジューラを登録しました");
                         }
-                    } else if(args[0].equalsIgnoreCase("admins")) {
+                    } else */
+                    if(args[0].equalsIgnoreCase("admins")) {
                         if(args.length < 2){
                             sender.sendMessage(ChatColor.YELLOW + "サブコマンドを入力してください");
                         } else if(args[1].equalsIgnoreCase("add")) {
