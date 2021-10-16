@@ -8,3 +8,6 @@ mysql:
   host: localhost
   password: changeme
   user: charindo
+gameStatus:
+  defaultTime: 300
+  defaultWaitTime: 30

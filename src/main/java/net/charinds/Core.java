@@ -23,8 +23,8 @@ public final class Core extends JavaPlugin implements Listener {
         eventManager.registerEvents(this);
         CommandManager commandManager = new CommandManager();
         commandManager.registerCommands();
-        GameManager gameManager = new GameManager();
         ConfigManager configManager = new ConfigManager();
+        GameManager gameManager = new GameManager();
         //===============================================//
         getLogger().info("プラグインを読み込みました。");
     }

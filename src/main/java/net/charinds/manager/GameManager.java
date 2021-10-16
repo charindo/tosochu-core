@@ -1,20 +1,18 @@
 package net.charinds.manager;
 
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import net.charinds.Core;
 import net.charinds.scheduler.Timer;
 import net.charinds.store.CustomConfig;
-import net.charinds.store.StatusStore;
+import net.charinds.store.Status;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
-
-import java.util.TimerTask;
 
 public class GameManager {
 
@@ -26,8 +24,8 @@ public class GameManager {
 
     public GameManager() {
         this.gameManager = this;
-        status = StatusStore.STOPPED;
-        time = 0;
+        status = Status.STOPPED;
+        time = ConfigManager.getCustomConfig("config").getConfig().getInt("gameStatus.defaultTime");
         timerTask = new Timer();
         timerTask.runTaskTimer(Core.getInstance(), 0L, 20L);
     }
@@ -44,18 +42,43 @@ public class GameManager {
         return status;
     }
 
+    public void setTime(Integer new_time) {
+        time = new_time;
+    }
+
+    public Integer getTime() {
+        return time;
+    }
+
+    public String getTimeToString() {
+        return time / 60 + ":" + time % 60;
+    }
+
     public void updateScoreboard(Player player) {
         Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective objective = board.registerNewObjective("Main board", "dummy");
-        objective.setDisplayName("逃走中");
-        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-        Integer i = 0;
-        Score score;
-        score = objective.getScore(ChatColor.YELLOW + "ゲーム開始まで");
-        score.setScore(i--);
-        score = objective.getScore(ChatColor.YELLOW + "しばらくお待ちください...");
-        score.setScore(i--);
-        player.setScoreboard(board);
+        objective.setDisplayName("\u00A7e\u00A7lRunForMoney");
+        if (getStatus().equals(Status.STOPPED)) {
+            objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+            Integer i = 0;
+            Score score;
+            score = objective.getScore(ChatColor.YELLOW + " ゲーム開始まで");
+            score.setScore(i--);
+            score = objective.getScore(ChatColor.YELLOW + " しばらくお待ちください...");
+            score.setScore(i--);
+            player.setScoreboard(board);
+        } else if (getStatus().equals(Status.WAITING)) {
+            objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+            Integer i = 0;
+            Score score;
+            score = objective.getScore(" ゲーム開始まで: " + ChatColor.GREEN + "" + getTimeToString() + " ");
+            score.setScore(i--);
+            score = objective.getScore(ChatColor.YELLOW + "");
+            score.setScore(i--);
+            score = objective.getScore(ChatColor.YELLOW + " charinds.net");
+            score.setScore(i--);
+            player.setScoreboard(board);
+        }
     }
 
     public void startGame() {
@@ -82,6 +105,6 @@ public class GameManager {
     }
 
     public void stopGame() {
-        setStatus(StatusStore.STOPPED);
+        setStatus(Status.STOPPED);
     }
 }

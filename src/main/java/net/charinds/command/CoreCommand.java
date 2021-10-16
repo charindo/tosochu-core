@@ -2,6 +2,7 @@ package net.charinds.command;
 
 import net.charinds.manager.ConfigManager;
 import net.charinds.manager.GameManager;
+import net.charinds.store.Status;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -29,7 +30,11 @@ public class CoreCommand implements CommandExecutor {
                             sender.sendMessage(ChatColor.GREEN + "スケジューラを登録しました");
                         }
                     } else */
-                    if (args[0].equalsIgnoreCase("start")) {
+                    if (args[0].equalsIgnoreCase("sw")) {
+                        GameManager.getInstance().setStatus(Status.WAITING);
+                        GameManager.getInstance().setTime(ConfigManager.getCustomConfig("config").getConfig().getInt("gameStatus.defaultWaitTime"));
+                        sender.sendMessage(ChatColor.GREEN + "設定が完了しました");
+                    } else if (args[0].equalsIgnoreCase("start")) {
                         GameManager.getInstance().startGame();
                     } else if (args[0].equalsIgnoreCase("reset")) {
                         GameManager.getInstance().resetGame();

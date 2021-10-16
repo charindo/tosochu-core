@@ -1,6 +1,6 @@
 package net.charinds.store;
 
-public class StatusStore {
+public class Status {
     public final static Integer STOPPED = 0;
     public final static Integer WAITING = 1;
     public final static Integer DURING_THE_GAME = 2;
