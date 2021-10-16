@@ -1,8 +1,7 @@
 package net.charinds.command;
 
-import net.charinds.Core;
 import net.charinds.manager.ConfigManager;
-import net.charinds.scheduler.Timer;
+import net.charinds.manager.GameManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -30,7 +29,13 @@ public class CoreCommand implements CommandExecutor {
                             sender.sendMessage(ChatColor.GREEN + "スケジューラを登録しました");
                         }
                     } else */
-                    if(args[0].equalsIgnoreCase("admin")) {
+                    if (args[0].equalsIgnoreCase("start")) {
+                        GameManager.getInstance().startGame();
+                    } else if (args[0].equalsIgnoreCase("reset")) {
+                        GameManager.getInstance().resetGame();
+                    } else if (args[0].equalsIgnoreCase("stop")) {
+                        GameManager.getInstance().stopGame();
+                    } else if(args[0].equalsIgnoreCase("admin")) {
                         if(args.length < 2){
                             sender.sendMessage(ChatColor.YELLOW + "サブコマンドを入力してください");
                         } else if(args[1].equalsIgnoreCase("add")) {
@@ -39,8 +44,8 @@ public class CoreCommand implements CommandExecutor {
                             } else {
                                 Player player = Bukkit.getPlayer(args[2]);
                                 if (!Objects.isNull(player)){
-                                    ConfigManager.admins.getConfig().set(player.getUniqueId().toString() + ".name", args[2]);
-                                    ConfigManager.admins.saveConfig();
+                                    ConfigManager.getCustomConfig("admin").getConfig().set(player.getUniqueId().toString() + ".name", args[2]);
+                                    ConfigManager.getCustomConfig("admin").saveConfig();
                                     sender.sendMessage(ChatColor.GREEN + "Adminの追加が完了しました");
                                 } else {
                                     sender.sendMessage(ChatColor.RED + "プレイヤーが見つかりませんでした");
