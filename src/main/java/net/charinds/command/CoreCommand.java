@@ -61,8 +61,8 @@ public class CoreCommand implements CommandExecutor {
                             } else {
                                 Player player = Bukkit.getPlayer(args[2]);
                                 if (!Objects.isNull(player)){
-                                    ConfigManager.admins.getConfig().set(player.getUniqueId().toString() + ".name", args[2]);
-                                    ConfigManager.admins.saveConfig();
+                                    ConfigManager.admin.getConfig().set(player.getUniqueId().toString() + ".name", args[2]);
+                                    ConfigManager.admin.saveConfig();
                                     sender.sendMessage(ChatColor.GREEN + "Adminの追加が完了しました");
                                 } else {
                                     sender.sendMessage(ChatColor.RED + "プレイヤーが見つかりませんでした");
