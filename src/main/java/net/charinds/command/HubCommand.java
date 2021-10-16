@@ -20,7 +20,7 @@ public class HubCommand implements CommandExecutor{
         if (command.getName().equalsIgnoreCase("hub")) { //親コマンドの判定
             if (sender instanceof Player) {
                 CustomConfig config = ConfigManager.getCustomConfig("config");
-                ((Player) sender).teleport(new Location(Bukkit.getWorld(config.getConfig().getString("lobby.world")), config.getConfig().getDouble("lobby.x"), config.getConfig().getDouble("lobby.y"), config.getConfig().getDouble("lobby.z")));
+                ((Player) sender).teleport(new Location(Bukkit.getWorld(config.getConfig().getString("lobbyLocation.world")), config.getConfig().getDouble("lobbyLocation.x"), config.getConfig().getDouble("lobbyLocation.y"), config.getConfig().getDouble("lobbyLocation.z")));
             } else {
                 sender.sendMessage(ChatColor.RED + "このコマンドはゲーム内で実行してください");
             }

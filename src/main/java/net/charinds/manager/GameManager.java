@@ -50,7 +50,7 @@ public class GameManager {
     public void resetGame() {
         CustomConfig config = ConfigManager.getCustomConfig("config");
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-            player.teleport(new Location(Bukkit.getWorld(config.getConfig().getString("lobby.world")), config.getConfig().getDouble("lobby.x"), config.getConfig().getDouble("lobby.y"), config.getConfig().getDouble("lobby.z")));
+            player.teleport(new Location(Bukkit.getWorld(config.getConfig().getString("lobbyLocation.world")), config.getConfig().getDouble("lobbyLocation.x"), config.getConfig().getDouble("lobbyLocation.y"), config.getConfig().getDouble("lobbyLocation.z")));
         }
         resetStatus();
     }
