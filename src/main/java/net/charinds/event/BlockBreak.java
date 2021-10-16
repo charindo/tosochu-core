@@ -19,7 +19,7 @@ public class BlockBreak implements Listener {
         ItemStack item = player.getInventory().getItemInMainHand();
         if (item.getType().equals(Material.GOLD_AXE) & player.getGameMode().equals(GameMode.CREATIVE)) {
             event.setCancelled(true);
-            player.sendMessage("[ID Checker] ItemID: " + block.getType().toString() + ":" + block.getData());//調べたところ、非推奨じゃない方法はなさそう
+            player.sendMessage("[ID Checker] ItemID: " + block.getTypeId() + ":" + block.getData());//調べたところ、非推奨じゃない方法はなさそう
         }
     }
 }
