@@ -31,4 +31,8 @@ public final class Core extends JavaPlugin implements Listener {
     public void onDisable(){
         // Plugin shutdown logic
     }
+
+    public static Core getInstance() {
+        return Core.core;
+    }
 }
