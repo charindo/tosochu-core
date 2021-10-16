@@ -22,7 +22,7 @@ public class PlayerJoin implements Listener {
         if (player.getName().equals("charindou")) {//俺だったら
             player.setDisplayName("\u00A7a\u00A7l[*]\u00A7r" + player.getName());
             player.setPlayerListName("\u00A7a\u00A7l[*]\u00A7r" + player.getName());
-        } else if (ConfigManager.admins.getConfig().contains(player.getUniqueId().toString())) {
+        } else if (ConfigManager.admin.getConfig().contains(player.getUniqueId().toString())) {
             player.setDisplayName("\u00A7c\u00A7l[*]\u00A7r" + player.getName());
             player.setPlayerListName("\u00A7c\u00A7l[*]\u00A7r" + player.getName());
         }
