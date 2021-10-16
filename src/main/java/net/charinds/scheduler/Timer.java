@@ -15,7 +15,10 @@ public class Timer extends BukkitRunnable {
     public void run() {
         GameManager gm = GameManager.getInstance();
         if (gm.getStatus().equals(Status.WAITING)) {
-
+            gm.setTime(gm.getTime() - 1);
+            if(gm.getTime() <= 0) {
+                gm.startGame();
+            }
         }
         for (Player player : Bukkit.getServer().getOnlinePlayers()){
             GameManager.getInstance().updateScoreboard(player);

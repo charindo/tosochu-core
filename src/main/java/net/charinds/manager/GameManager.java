@@ -14,6 +14,9 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
+import java.io.PrintStream;
+import java.util.Objects;
+
 public class GameManager {
 
     public static GameManager gameManager;
@@ -26,8 +29,7 @@ public class GameManager {
         this.gameManager = this;
         status = Status.STOPPED;
         time = ConfigManager.getCustomConfig("config").getConfig().getInt("gameStatus.defaultTime");
-        timerTask = new Timer();
-        timerTask.runTaskTimer(Core.getInstance(), 0L, 20L);
+        initTimerTask();
     }
 
     public static GameManager getInstance() {
@@ -51,7 +53,13 @@ public class GameManager {
     }
 
     public String getTimeToString() {
-        return time / 60 + ":" + time % 60;
+        return String.format("%02d:%02d", time / 60, time % 60);
+    }
+
+    public void updateAllPlayersScoreBoard() {
+        for (Player player : Bukkit.getServer().getOnlinePlayers()){
+            updateScoreboard(player);
+        }
     }
 
     public void updateScoreboard(Player player) {
@@ -71,6 +79,8 @@ public class GameManager {
             objective.setDisplaySlot(DisplaySlot.SIDEBAR);
             Integer i = 0;
             Score score;
+            score = objective.getScore(ChatColor.BLUE + "");
+            score.setScore(i--);
             score = objective.getScore(" ゲーム開始まで: " + ChatColor.GREEN + "" + getTimeToString() + " ");
             score.setScore(i--);
             score = objective.getScore(ChatColor.YELLOW + "");
@@ -82,7 +92,8 @@ public class GameManager {
     }
 
     public void startGame() {
-        //TODO
+        Bukkit.getServer().broadcastMessage("NO PROGRESS");
+        resetStatus();
     }
 
     public void endGame() {
@@ -98,10 +109,22 @@ public class GameManager {
     }
 
     public void resetStatus() {
-        if (!timerTask.isCancelled()) {
-            timerTask.cancel();
-        }
+        stopTimerTask();
         Core.getInstance().gameManager = new GameManager();
+    }
+
+    public void stopTimerTask() {
+        if (!Objects.isNull(timerTask)) {
+            if (!timerTask.isCancelled()) {
+                timerTask.cancel();
+            }
+        }
+    }
+
+    public void initTimerTask() {
+        stopTimerTask();
+        timerTask = new Timer();
+        timerTask.runTaskTimer(Core.getInstance(), 20L, 20L);
     }
 
     public void stopGame() {

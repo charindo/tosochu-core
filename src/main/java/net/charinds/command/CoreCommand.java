@@ -32,7 +32,9 @@ public class CoreCommand implements CommandExecutor {
                     } else */
                     if (args[0].equalsIgnoreCase("sw")) {
                         GameManager.getInstance().setStatus(Status.WAITING);
+                        GameManager.getInstance().initTimerTask();
                         GameManager.getInstance().setTime(ConfigManager.getCustomConfig("config").getConfig().getInt("gameStatus.defaultWaitTime"));
+                        GameManager.getInstance().updateAllPlayersScoreBoard();
                         sender.sendMessage(ChatColor.GREEN + "設定が完了しました");
                     } else if (args[0].equalsIgnoreCase("start")) {
                         GameManager.getInstance().startGame();
