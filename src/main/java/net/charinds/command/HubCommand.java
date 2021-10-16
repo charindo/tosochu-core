@@ -1,7 +1,9 @@
 package net.charinds.command;
 
 import net.charinds.Core;
+import net.charinds.manager.ConfigManager;
 import net.charinds.scheduler.Timer;
+import net.charinds.store.CustomConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -17,7 +19,8 @@ public class HubCommand implements CommandExecutor{
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
         if (command.getName().equalsIgnoreCase("hub")) { //親コマンドの判定
             if (sender instanceof Player) {
-                ((Player) sender).teleport(new Location(Bukkit.getWorld("lobby"), -5.5,66,-5.5));
+                CustomConfig config = ConfigManager.getCustomConfig("config");
+                ((Player) sender).teleport(new Location(Bukkit.getWorld(config.getConfig().getString("lobby.world")), config.getConfig().getDouble("lobby.x"), config.getConfig().getDouble("lobby.y"), config.getConfig().getDouble("lobby.z")));
             } else {
                 sender.sendMessage(ChatColor.RED + "このコマンドはゲーム内で実行してください");
             }
