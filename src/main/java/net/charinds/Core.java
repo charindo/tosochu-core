@@ -13,6 +13,8 @@ public final class Core extends JavaPlugin implements Listener {
 
     public static Core core;
 
+    public GameManager gameManager;
+
     @Override
     public void onEnable(){
         this.core = this;
