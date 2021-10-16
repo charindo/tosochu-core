@@ -30,7 +30,7 @@ public class CoreCommand implements CommandExecutor {
                             sender.sendMessage(ChatColor.GREEN + "スケジューラを登録しました");
                         }
                     } else */
-                    if(args[0].equalsIgnoreCase("admins")) {
+                    if(args[0].equalsIgnoreCase("admin")) {
                         if(args.length < 2){
                             sender.sendMessage(ChatColor.YELLOW + "サブコマンドを入力してください");
                         } else if(args[1].equalsIgnoreCase("add")) {
