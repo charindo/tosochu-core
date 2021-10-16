@@ -11,7 +11,7 @@ public class ConfigManager{
     public ConfigManager(){
         config = new CustomConfig(Core.core);
         config.saveDefaultConfig();
-        admins = new CustomConfig(Core.core, "admins.yml");
+        admins = new CustomConfig(Core.core, "admin.yml");
         admins.saveDefaultConfig();
     }
 }
