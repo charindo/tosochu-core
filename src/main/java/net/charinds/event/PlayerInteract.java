@@ -25,7 +25,7 @@ public class PlayerInteract implements Listener{
             if (event.getAction().equals(Action.RIGHT_CLICK_AIR)) {
                 item.setAmount(item.getAmount() - 1);
                 inventory.setItemInMainHand(item);
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10 * 20, 2, true));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 10 * 20, 3, true));
                 player.sendMessage("\u00A7aスピエメの力で、足が速くなった！");
                 player.playSound(new Location(Bukkit.getWorld(player.getWorld().getName()), player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ()), Sound.ENTITY_WITHER_SHOOT, (float) 0.75, (float) 1.5);
             }
